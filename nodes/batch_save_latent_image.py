@@ -12,7 +12,7 @@ class BatchSaveLatentImage:
         self.latents_dir = os.path.join(self.output_dir, "latents")
         os.makedirs(self.latents_dir, exist_ok=True)
         
-    RETURN_TYPES = ("LATENT", "IMAGE")
+    RETURN_TYPES = ()
     FUNCTION = "save_latent_and_image"
     CATEGORY = "latent"
     DISPLAY_NAME = "Batch Save Latent & Image"
@@ -24,13 +24,13 @@ class BatchSaveLatentImage:
                 "latent": ("LATENT",),
                 "image": ("IMAGE",),
                 "filenames": ("STRING", {"multiline": True, "default": "latent_1\nlatent_2\nlatent_3"}),
-                "save_directory": ("STRING", {"default": "latent"}),
+                "save_directory": ("STRING", {"default": "latents"}),
             },
         }
     
     def save_latent_and_image(self, latent, image, filenames, save_directory):
         # Determine save directory
-        if save_directory.strip() == "" or save_directory.strip() == "latent":
+        if save_directory.strip() == "" or save_directory.strip() == "latents":
             save_dir = self.latents_dir
         else:
             # Check if it's an absolute path
@@ -104,5 +104,5 @@ class BatchSaveLatentImage:
         
         print(f"Saved {max(latent_batch_size, image_batch_size)} latent(s) and image(s) to {save_dir}")
         
-        # Return the original latent and image
-        return (latent, image) 
+        # No return values
+        return () 
