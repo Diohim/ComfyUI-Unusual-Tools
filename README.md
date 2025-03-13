@@ -49,7 +49,7 @@ Saves latents and their corresponding images to disk. Supports batch processing 
 - `latent`: The latent to save
 - `image`: The image to save
 - `filenames`: List of filenames (one per line) to use for saving
-- `save_directory`: Directory to save files (defaults to ComfyUI's output/latents folder)
+- `save_directory`: Directory to save files (defaults to "latent", which saves to ComfyUI's output/latents folder)
 
 **Outputs:**
 - `LATENT`: The original latent (passthrough)
@@ -61,7 +61,7 @@ Loads latents and their corresponding images from disk. Supports batch processin
 
 **Inputs:**
 - `filenames`: List of filenames (one per line) to load
-- `load_directory`: Directory to load files from (defaults to ComfyUI's output/latents folder)
+- `load_directory`: Directory to load files from (defaults to "latent", which loads from ComfyUI's output/latents folder)
 
 **Outputs:**
 - `LATENT`: The loaded latent(s)

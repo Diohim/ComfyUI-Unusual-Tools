@@ -24,16 +24,21 @@ class BatchSaveLatentImage:
                 "latent": ("LATENT",),
                 "image": ("IMAGE",),
                 "filenames": ("STRING", {"multiline": True, "default": "latent_1\nlatent_2\nlatent_3"}),
-                "save_directory": ("STRING", {"default": ""}),
+                "save_directory": ("STRING", {"default": "latent"}),
             },
         }
     
     def save_latent_and_image(self, latent, image, filenames, save_directory):
         # Determine save directory
-        if save_directory.strip() == "":
+        if save_directory.strip() == "" or save_directory.strip() == "latent":
             save_dir = self.latents_dir
         else:
-            save_dir = save_directory
+            # Check if it's an absolute path
+            if os.path.isabs(save_directory):
+                save_dir = save_directory
+            else:
+                # If it's a relative path, make it relative to the output directory
+                save_dir = os.path.join(self.output_dir, save_directory)
             os.makedirs(save_dir, exist_ok=True)
         
         # Parse filenames

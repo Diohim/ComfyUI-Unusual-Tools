@@ -20,16 +20,21 @@ class BatchLoadLatentImage:
         return {
             "required": {
                 "filenames": ("STRING", {"multiline": True, "default": "latent_1\nlatent_2\nlatent_3"}),
-                "load_directory": ("STRING", {"default": ""}),
+                "load_directory": ("STRING", {"default": "latent"}),
             },
         }
     
     def load_latent_and_image(self, filenames, load_directory):
         # Determine load directory
-        if load_directory.strip() == "":
+        if load_directory.strip() == "" or load_directory.strip() == "latent":
             load_dir = self.latents_dir
         else:
-            load_dir = load_directory
+            # Check if it's an absolute path
+            if os.path.isabs(load_directory):
+                load_dir = load_directory
+            else:
+                # If it's a relative path, make it relative to the output directory
+                load_dir = os.path.join(self.output_dir, load_directory)
         
         if not os.path.exists(load_dir):
             raise ValueError(f"Directory does not exist: {load_dir}")
