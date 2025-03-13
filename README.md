@@ -70,6 +70,16 @@ Loads latents and their corresponding images from disk. Supports batch processin
 
 The Batch Save/Load nodes are designed to help manage VRAM usage in complex workflows. By saving intermediate latents and images to disk, you can free up VRAM and then load them back when needed.
 
+## Troubleshooting
+
+If you encounter issues with saving or loading latents and images:
+
+1. Check the ComfyUI console for detailed error messages
+2. Ensure the "latents" directory exists in your ComfyUI output folder
+3. Make sure you have write permissions to the output directory
+4. Try using absolute paths if relative paths aren't working
+5. Verify that the filenames you're trying to load actually exist in the specified directory
+
 ## License
 
 MIT 
