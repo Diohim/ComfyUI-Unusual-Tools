@@ -43,6 +43,8 @@ class FillMaskWithColor:
     FUNCTION = "fill_masked_area"
 
     def fill_masked_area(self, image: torch.Tensor, mask: torch.Tensor, fill_color: str):
+        if mask is None:
+            return (image,)
         # 确保输入张量在同一设备和数据类型
         device = image.device
         dtype = image.dtype
