@@ -1,0 +1,14 @@
+[project]
+name = "unusual-tools"
+description = "A collection of unusual but useful image processing nodes for ComfyUI."
+version = "1.0.0"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/Diohim/ComfyUI-Unusual-Tools"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Unusual-Tools"
+Icon = ""
